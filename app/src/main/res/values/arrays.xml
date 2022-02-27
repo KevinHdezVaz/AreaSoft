@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Colores">
+        <item >Rojo</item>
+        <item >Verde</item>
+        <item >Celeste</item>
+        <item >Azul</item>
+        <item >Naranja</item>
+        <item >Violeta</item>
+    </string-array>
+    <string-array name="ColoresValores">
+        <item>#F44336</item>
+        <item>#00C853</item>
+        <item>#18FFFF</item>
+        <item>#2962FF</item>
+        <item>#FF5722</item>
+        <item>#9C27B0</item>
+    </string-array>
+    <string-array name="Incremento">
+        <item>0.1</item>
+        <item>0.5</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="IncrementoValores">
+        <item>0.1</item>
+        <item>0.5</item>
+        <item>1</item>
+    </string-array>
+
+</resources>

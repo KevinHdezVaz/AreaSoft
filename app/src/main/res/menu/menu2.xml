@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item-->
+        <!--android:title="Actualizar"-->
+        <!--android:id="@+id/actualizar"-->
+        <!--android:icon="@drawable/ic_refresh_white_36dp"-->
+        <!--app:showAsAction="always"-->
+        <!--/>-->
+    <item
+        android:title="Recortar"
+        android:id="@+id/cortar"
+        android:icon="@drawable/ic_crop"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="Recortar automático"
+        android:id="@+id/cortar_automatico"
+        android:icon="@drawable/ic_crop"
+        app:showAsAction="never"
+        />
+    <item
+        android:title="Abrir imagen desde la galería"
+        android:id="@+id/abrirImagen"
+        android:icon="@drawable/ic_action_galeria"
+        app:showAsAction="ifRoom"
+        />
+
+    <item android:title="Rotar imagen"
+        android:id="@+id/rotar">
+        <menu>
+            <item
+                android:title="Rotar derecha"
+                android:id="@+id/rotarDerecha"
+                />
+            <item
+                android:title="Rotar izquierda"
+                android:id="@+id/rotarIzquierda"
+                />
+        </menu>
+    </item>
+
+    <item
+        android:title="Procesar imagen"
+        android:id="@+id/aplicarFiltro"
+        android:icon="@android:drawable/ic_menu_preferences"
+        />
+
+    <item
+        android:title="Editar imagen"
+        android:id="@+id/editar"
+        android:icon="@android:drawable/ic_menu_preferences"
+        />
+
+    <item
+        android:title="Medir en la imagen"
+        android:id="@+id/medir"
+        />
+    <item
+        android:title="Recuento Ki 67"
+        android:id="@+id/recuentoKi67">
+        <menu>
+            <item
+                android:title="Semiautomático"
+                android:id="@+id/recuentoKi67A"
+                />
+            <item
+                android:title="Manual"
+                android:id="@+id/recuentoKi67M"
+                />
+        </menu>
+    </item>
+
+    <!--<item
+        android:title="Guardar imagen"
+        android:id="@+id/guardarImagen"
+        android:icon="@drawable/ic_save_white_24dp"
+        app:showAsAction="always"
+        />
+    !-->
+
+    <!--<item-->
+        <!--android:title="Configuración"-->
+        <!--android:id="@+id/config"-->
+        <!--android:icon="@android:drawable/ic_menu_preferences"-->
+        <!--/>-->
+
+    <item
+        android:title="Acerca de ..."
+        android:id="@+id/acercaDe"
+        android:icon="@android:drawable/ic_menu_info_details"
+        />
+
+</menu>

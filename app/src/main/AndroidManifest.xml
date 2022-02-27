@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.windows10.leerimagen">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Prueba"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".vistaPick"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.windows10.leerimagen.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivityPrincipal"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarPrincipal"></activity>
+        <activity
+            android:name=".VistaPrevia"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Edicion"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".Preferencias"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AcercaDe2"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".Filtros"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".MedicionesCuantitativas"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarPrincipal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".CortarImagen"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarPrincipal" />
+        <activity
+            android:name=".MainActivityVisualizarFoto"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".CalibracionesRealizadasActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecuentoKi67Activity"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".RecuentoKi67ManualActivity"
+            android:parentActivityName=".VistaPrevia"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarPrincipal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+        </activity>
+        <activity
+            android:name=".Ki67ObtenerColorActivity"
+            android:parentActivityName=".RecuentoKi67Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarPrincipal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.RecuentoKi67Activity" />
+        </activity>
+        <activity
+            android:name=".Ki67ComparativaActivity"
+            android:parentActivityName=".RecuentoKi67Activity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.windows10.leerimagen.RecuentoKi67Activity" />
+        </activity>
+    </application>
+
+</manifest>

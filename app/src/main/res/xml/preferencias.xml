@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferencias_principal"
+    android:title="Preferencia Principal"
+    >
+    <PreferenceCategory
+        android:title="Medición cuantitativa"
+        android:key="medicion"
+        >
+        <PreferenceScreen
+            android:title="Calibración"
+            android:summary="Configure el aumento del objetivo, el tamaño del patron y su escala para la calibración"
+            android:key="calibracion">
+            <EditTextPreference
+                android:title="Microscopio"
+                android:key="microscopio"
+                android:text="Desconocido"
+                android:dialogTitle="Ingrese la marca o identificación: "
+                />
+            <EditTextPreference
+                android:title="Aumento del objetivo (X)"
+                android:key="aumento"
+                android:dialogTitle="Introduzca el aumento"
+                android:defaultValue="4"
+                />
+            <EditTextPreference
+                android:inputType="numberDecimal"
+                android:dialogTitle="Introduzca el patron en um"
+                android:defaultValue="100"
+                android:key="patron"
+                android:title="Patron (um)" />
+            <EditTextPreference
+                android:inputType="numberDecimal"
+                android:dialogTitle="Escala"
+                android:dialogMessage="Es conveniente modificarlo con la herramienta 'Obtener escala'"
+                android:defaultValue="0"
+                android:key="escala"
+                android:title="Escala" />
+        </PreferenceScreen>
+        <!--<PreferenceScreen-->
+            <!--android:title="Limites de colores"-->
+            <!--android:key="limiteColor"-->
+            <!--android:summary="Configure los limites de los colores para la calibración automática">-->
+            <!--<PreferenceCategory-->
+                <!--android:title="Límites de colores">-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Rojo maximo"-->
+                    <!--android:key="rMax"-->
+                    <!--android:defaultValue="200"/>-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Rojo minimo"-->
+                    <!--android:key="rMin"-->
+                    <!--android:defaultValue="100"/>-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Verde maximo"-->
+                    <!--android:key="gMax"-->
+                    <!--android:defaultValue="50"/>-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Verde minimo"-->
+                    <!--android:key="gMin"-->
+                    <!--android:defaultValue="5"/>-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Azul maximo"-->
+                    <!--android:key="bMax"-->
+                    <!--android:defaultValue="50"/>-->
+                <!--<EditTextPreference-->
+                    <!--android:inputType="number"-->
+                    <!--android:title="Azul minimo"-->
+                    <!--android:key="bMin"-->
+                    <!--android:defaultValue="5"/>-->
+            <!--</PreferenceCategory>-->
+        <!--</PreferenceScreen>-->
+        <PreferenceScreen
+            android:title="Medición"
+            android:summary="Configure el aumento del objetivo para la medición y el color de la regla de medición"
+            android:key="medicion">
+            <ListPreference
+                android:title="Color de medición"
+                android:dialogTitle="Eliga un color..."
+                android:key="colorMedicion"
+                android:entries="@array/Colores"
+                android:entryValues="@array/ColoresValores"
+                android:defaultValue="#2962FF">
+            </ListPreference>
+            <EditTextPreference
+                android:title="Aumento del objetivo (X)"
+                android:key="aumentoMedicion"
+                android:dialogTitle="Introduzca el aumento"
+                android:defaultValue="4"
+                />
+            <ListPreference
+                android:title="Incremento"
+                android:dialogTitle="Seleccione el incremento deseado..."
+                android:key="incremento"
+                android:entries="@array/Incremento"
+                android:entryValues="@array/IncrementoValores"
+                android:defaultValue="1">
+            </ListPreference>
+        </PreferenceScreen>
+        <Preference
+            android:title="Calibraciones previas"
+            android:key="calibracionesPrevias"
+            android:summary="Calibraciones realizadas previamente con determinados objetivos y patrones">
+            <intent
+                android:targetPackage="com.example.windows10.leerimagen"
+                android:targetClass="com.example.windows10.leerimagen.CalibracionesRealizadasActivity"/>
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item-->
+        <!--android:title="Vista previa"-->
+        <!--android:id="@+id/vistaPrevia"-->
+        <!--/>-->
+    <!--<item-->
+        <!--android:title="Aplicar Filtros"-->
+        <!--android:id="@+id/aplicarFiltro"-->
+        <!--/>-->
+    <item
+        android:title="Rotar flecha"
+        android:id="@+id/rotarFlecha"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_rotate_right_white_24dp"
+        />
+    <item
+        android:title="Rotar flecha2"
+        android:id="@+id/rotarFlecha2"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_rotate_left_white_24dp"
+        />
+    <item
+        android:title="Color"
+        android:id="@+id/colorMenu"
+        android:icon="@drawable/ic_action_color_menu"
+        app:showAsAction="always"
+        >
+        <menu>
+            <item
+                android:title="Azul"
+                android:id="@+id/azul"/>
+            <item
+                android:title="Verde"
+                android:id="@+id/verde"/>
+            <item
+                android:title="Rojo"
+                android:id="@+id/rojo"/>
+            <item
+                android:title="Amarillo"
+                android:id="@+id/amarillo"/>
+            <item
+                android:title="Magenta"
+                android:id="@+id/magenta"/>
+            <item
+                android:title="Celeste"
+                android:id="@+id/celeste"/>
+            <item
+                android:title="Negro"
+                android:id="@+id/negro"/>
+        </menu>
+
+    </item>
+
+    <item
+        android:title="Guardar"
+        android:id="@+id/guardar"
+        android:icon="@drawable/ic_save_white_24dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Borrar"
+        android:id="@+id/borrarTodo"
+        android:icon="@drawable/ic_delete_white_24dp"
+        app:showAsAction="always"
+        />
+    <!--<item-->
+        <!--android:title="Rotar imagen"-->
+        <!--android:id="@+id/rotar"-->
+        <!--/>-->
+    <item
+        android:title="Agregar Flecha"
+        android:id="@+id/agregarFlecha"
+        />
+    <!--<group-->
+        <!--android:id="@+id/lapizFlecha"-->
+        <!--android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/lapiz"-->
+            <!--android:title="Lapiz" />-->
+        <!--<item-->
+            <!--android:id="@+id/flecha"-->
+            <!--android:title="Flecha" />-->
+    <!--</group>-->
+
+
+</menu>

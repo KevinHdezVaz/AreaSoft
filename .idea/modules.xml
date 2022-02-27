@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HistoSoft.iml" filepath="$PROJECT_DIR$/.idea/modules/HistoSoft.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/HistoSoft.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/HistoSoft.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/openCVLibrary330/HistoSoft.openCVLibrary330.iml" filepath="$PROJECT_DIR$/.idea/modules/openCVLibrary330/HistoSoft.openCVLibrary330.iml" />
+    </modules>
+  </component>
+</project>

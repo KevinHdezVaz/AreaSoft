@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:title="Aplicar filtros"
+        android:icon="@drawable/ic_ok"
+        android:id="@+id/aplicar"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="Descartar filtros"
+        android:icon="@drawable/ic_action_text_close"
+        android:id="@+id/descartar"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="Guardar filtros"
+        android:icon="@drawable/ic_save_white_24dp"
+        android:id="@+id/guardarFiltros"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:title="Aplicar filtros guardados"
+        android:id="@+id/aplicarFiltros"
+        app:showAsAction="never"
+        />
+    <!--<item-->
+        <!--android:title="Vista previa"-->
+        <!--android:id="@+id/vistaPrevia"-->
+        <!--/>-->
+    <!--<item-->
+        <!--android:title="Editar"-->
+        <!--android:id="@+id/editar"-->
+        <!--/>-->
+<item
+    android:title="Filtros"
+    android:id="@+id/filtros">
+    <menu>
+        <item
+            android:title="Escala de grises"
+            android:id="@+id/grises"/>
+        <item
+            android:title="Binarizar"
+            android:id="@+id/binarizacion"/>
+        <item
+            android:title="Invertir colores"
+            android:id="@+id/invertirColores"/>
+        <item
+            android:title="Saturación"
+            android:id="@+id/saturacion"/>
+        <item
+            android:title="Brillo"
+            android:id="@+id/brillo"/>
+        <item
+            android:title="Contraste"
+            android:id="@+id/contraste"/>
+        <item
+            android:title="Nitidez"
+            android:id="@+id/nitidez"/>
+        <item
+            android:title="Temperatura del color"
+            android:id="@+id/temperaturaColor"/>
+        <item
+            android:title="Ecualizacion"
+            android:id="@+id/ecualizacion"/>
+    </menu>
+</item>
+
+
+
+
+    <!--<item android:title="Rotar Imagen">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:title="Rotar derecha"-->
+                <!--android:id="@+id/rotarDerecha"-->
+                <!--/>-->
+            <!--<item-->
+                <!--android:title="Rotar izquierda"-->
+                <!--android:id="@+id/rotarIzquierda"-->
+                <!--/>-->
+        <!--</menu>-->
+    <!--</item>-->
+
+    <!--<item-->
+        <!--android:title="Guardar imagen"-->
+        <!--android:id="@+id/guardarImagen"-->
+        <!--android:icon="@drawable/ic_save_white_24dp"-->
+        <!--app:showAsAction="always"-->
+        <!--/>-->
+
+    <!--<item-->
+        <!--android:title="Configuración"-->
+        <!--android:id="@+id/config"-->
+        <!--android:icon="@android:drawable/ic_menu_preferences"-->
+        <!--/>-->
+    <!--<item-->
+        <!--android:title="Acerca de ..."-->
+        <!--android:id="@+id/acercaDe"-->
+        <!--android:icon="@android:drawable/ic_menu_info_details"-->
+        <!--/>-->
+
+</menu>

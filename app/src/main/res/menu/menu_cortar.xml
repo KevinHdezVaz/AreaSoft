@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Recortar"
+        android:id="@+id/cortar"
+        app:showAsAction="always"
+        />
+        <!--android:icon="@drawable/ic_ok"!-->
+    <item
+        android:title="Zoom"
+        android:id="@+id/zoom"
+        android:icon="@drawable/ic_zoom_in_white_36dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Acerca de ..."
+        android:id="@+id/acercaDe"
+        android:icon="@android:drawable/ic_menu_info_details"
+        />
+</menu>

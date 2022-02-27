@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Guardar valores y salir"
+        android:id="@+id/guardar3"
+        android:icon="@drawable/ic_save_white_24dp"
+        app:showAsAction="never"/>
+    <item
+        android:title="Obtener color">
+        <menu>
+            <item
+                android:title="Núcleos proliferantes"
+                android:id="@+id/colorProliferantes"/>
+            <item
+                android:title="Núcleos no proliferantes"
+                android:id="@+id/colorNProliferantes"/>
+            <item
+                android:title="Fondo"
+                android:id="@+id/colorEE"/>
+        </menu>
+    </item>
+</menu>

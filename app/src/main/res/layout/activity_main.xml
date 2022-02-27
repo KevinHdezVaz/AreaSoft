@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    tools:context=".VistaPrevia"
+    android:layout_weight="10"
+    android:weightSum="1"
+    android:background="@android:color/darker_gray"
+    android:keepScreenOn="true"
+    tools:showIn="@layout/activity_main_drawer">
+
+    <androidx.appcompat.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        >
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/button"
+        android:layout_below="@+id/toolbar"
+        app:lottie_rawRes="@raw/image"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/boton_camara"
+        android:elevation="10dp"
+        android:onClick="foto"
+        android:src="@drawable/ic_camera" />
+</RelativeLayout>

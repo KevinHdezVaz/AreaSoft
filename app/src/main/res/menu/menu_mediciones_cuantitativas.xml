@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item-->
+        <!--android:title="Zoom"-->
+        <!--android:id="@+id/zoom"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--android:icon="@drawable/ic_zoom_in_white_36dp"-->
+        <!--/>-->
+    <item
+        android:title="Obtener escala"
+        >
+        <menu>
+            <!--<item-->
+                <!--android:title="automaticamente"-->
+                <!--android:id="@+id/calibracionAutomatica"-->
+                <!--/>-->
+            <item
+                android:title="manualmente"
+                android:id="@+id/calibracionManual"
+                />
+
+        </menu>
+    </item>
+    <!--<item-->
+        <!--android:title="Obtener Color"-->
+        <!--android:id="@+id/obtenerColor">-->
+    <!--</item>-->
+    <!--<item-->
+        <!--android:title="Modo"-->
+        <!--android:id="@+id/modo">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:title="Modo escala"-->
+                <!--android:id="@+id/modoEscala"-->
+                <!--/>-->
+            <!--<item-->
+                <!--android:title="Modo medición"-->
+                <!--android:id="@+id/Modomedir"-->
+                <!--/>-->
+        <!--</menu>-->
+    <!--</item>-->
+
+    <item
+        android:title="Medir"
+        android:id="@+id/medir">
+    </item>
+
+    <!--<item-->
+        <!--android:title="Vista previa"-->
+        <!--android:id="@+id/vistaPrevia"-->
+        <!--/>-->
+
+    <item
+        android:title="Guardar"
+        android:id="@+id/guardar"
+        />
+
+    <item
+        android:title="Configuración"
+        android:id="@+id/config"
+        />
+
+</menu>

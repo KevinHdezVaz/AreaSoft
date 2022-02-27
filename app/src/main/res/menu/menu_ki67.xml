@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Agregar imagen"
+        android:id="@+id/agregarImagen"
+        android:icon="@drawable/ic_action_galeria"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Tomar foto"
+        android:id="@+id/tomarFoto"
+        android:icon="@drawable/ic_action_agregar_foto"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Obtener color"
+        android:id="@+id/obtenerColorKi67"
+        android:icon="@drawable/ic_action_obtener_color"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Borrar colores obtenidos"
+        android:id="@+id/borrarColorKi67"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Calcular porcentaje"
+        android:id="@+id/calcularPorcentajes"/>
+    <item
+        android:title="Calcular porcentaje total"
+        android:id="@+id/calcularPorcentajesT"/>
+    <item
+        android:title="Borrar Porcentajes"
+        android:id="@+id/borrarP"/>
+    <item android:title="Imágenes procesadas"
+          android:id="@+id/celulas">
+        <menu>
+            <item
+                android:title="Celulas proliferativas"
+                android:id="@+id/celM"
+                />
+            <item
+                android:title="Celulas no proliferativas"
+                android:id="@+id/celNM"
+                />
+            <item
+                android:title="Celulas P y NP"
+                android:id="@+id/celulasPyNP"
+                />
+            <item
+                android:title="Comparativa"
+                android:id="@+id/comparativa"
+                />
+        </menu>
+    </item>
+    <item
+        android:title="Imagen original"
+        android:id="@+id/imagenO"
+        />
+
+</menu>
