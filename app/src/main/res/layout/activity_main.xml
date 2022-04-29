@@ -27,17 +27,16 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/button"
         android:layout_below="@+id/toolbar"
-        app:lottie_rawRes="@raw/image"
+        android:layout_alignParentStart="true"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"/>
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/image" />
 
     <ImageButton
         android:id="@+id/button"

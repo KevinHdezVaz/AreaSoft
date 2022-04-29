@@ -55,4 +55,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+
+
+
+    //picasso lib
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //cloudinary sdk
+    implementation 'com.cloudinary:cloudinary-android:1.30.0'
 }

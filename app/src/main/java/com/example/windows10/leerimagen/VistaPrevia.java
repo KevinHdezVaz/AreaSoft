@@ -2,6 +2,7 @@ package com.example.windows10.leerimagen;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -23,18 +24,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +48,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -81,7 +89,7 @@ public class VistaPrevia extends AppCompatActivity {
 
     int[] pixels;
 
-
+    private Uri imagePath;
     final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE=2;
     final int REQUEST_TAKE_PHOTO=4;
     final int SELECT_PICTURE=8;
@@ -128,7 +136,9 @@ public class VistaPrevia extends AppCompatActivity {
                         break;
                     case R.id.nav_gallery:
                         //item.setChecked(true);
-                        abrirImagen(null);
+                       // abrirImagen(null);
+
+                        selectImage();
                         //getSupportActionBar().setTitle(item.getTitle());
                         break;
                     case R.id.guardarImagen:
@@ -155,7 +165,7 @@ public class VistaPrevia extends AppCompatActivity {
             }
         });
 
-        //setTitle("Imagen Previa");
+        // setTitle("Imagen Previa");
 
         iv1=(ImageView)findViewById(R.id.iv1);
         layout1=(RelativeLayout)findViewById(R.id.layout1);
@@ -367,13 +377,14 @@ public class VistaPrevia extends AppCompatActivity {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     private void guardarEnCache() {
 
-        SharedPreferences preferences=getSharedPreferences("datos", Context.MODE_PRIVATE);
-        nameFileDirectory=preferences.getString("nombre","")+preferences.getString("apellido","")
-                +"/"+preferences.getString("proyecto","");
+         nameFileDirectory="HistoSoft"+"/";
+
+
         File file = new File(getExternalCacheDir(), "imagenCache"+nameFileDirectory);
         file.mkdirs();
         if (!file.mkdirs()) {
             Log.e("directorio", "Directory not created");
+            Toast.makeText(this, "directorio no creado", Toast.LENGTH_SHORT).show();
         }
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("ddMMyyyyhhmmss");
         String date=simpleDateFormat.format(new Date());
@@ -385,8 +396,10 @@ public class VistaPrevia extends AppCompatActivity {
         selectedImage=Uri.fromFile(new_file);
 
         FileOutputStream outputStream = null;
+
         try {
             outputStream = new FileOutputStream(new_file);
+            //lo coloca en el c
             imagen.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
             outputStream.flush();
             outputStream.close();
@@ -418,8 +431,11 @@ public class VistaPrevia extends AppCompatActivity {
                 e.printStackTrace();
             }
             galleryAddPic();
+
         }else{
+
             Toast.makeText(this,"No existe imagen previa",Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -430,23 +446,7 @@ public class VistaPrevia extends AppCompatActivity {
     public void foto(View v){
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            photoFile = createFilePath();
-
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.windows10.leerimagen.fileprovider",
-                        photoFile);
-                selectedImage = photoURI;
-                Log.d("fotoUri",photoURI.toString());
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                takePictureIntent.putExtra("return-data",true);
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
-        }
+        someActivityResultLauncher.launch(takePictureIntent);
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -455,9 +455,7 @@ public class VistaPrevia extends AppCompatActivity {
 
     public  File createFilePath() {
 
-        SharedPreferences preferences=getSharedPreferences("datos", Context.MODE_PRIVATE);
-        nameFileDirectory="HistoSoft"+"/"+preferences.getString("nombre","")+" "+preferences.getString("apellido","")
-                         +"/"+preferences.getString("area","")+"/"+preferences.getString("muestra","");
+         nameFileDirectory="HistoSoft"+"/";
 
         File file=getAlbumStorageDir(nameFileDirectory);
         currentDirectory=file.getAbsoluteFile().toString();
@@ -685,19 +683,7 @@ public class VistaPrevia extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.cortar:
                 if(currentFileName != null) {
-//                    Intent intentCortar = new Intent("com.android.camera.action.CROP");
-//                    //intentCortar.setClassName("com.android.camera", "com.android.camera.CropImage");
-//                    intentCortar.setDataAndType(selectedImage,"image/*");
-//                    intentCortar.putExtra("crop", "true");
-//                    intentCortar.putExtra("aspectX", 1);
-//                    intentCortar.putExtra("aspectY", 1);
-//                    intentCortar.putExtra("outputX", 96);
-//                    intentCortar.putExtra("outputY", 96);
-//                    intentCortar.putExtra("noFaceDetection", true);
-//                    intentCortar.putExtra("return-data", true);
-//                    startActivityForResult(intentCortar, REQUEST_CROP_ICON);
-//                    if(imagen!=null)
-//                        imagen.recycle();
+
                     Intent intentCortar = new Intent(this,CortarImagen.class);
                     startActivity(intentCortar);
 
@@ -783,7 +769,8 @@ public class VistaPrevia extends AppCompatActivity {
                 rotarImagen(-90);
                 break;
             case R.id.abrirImagen:
-                abrirImagen(null);
+               // abrirImagen(null);
+                selectImage();
                 break;
             case R.id.recuentoKi67A:
                 Intent intentRecuentoA= new Intent(this, RecuentoKi67Activity.class);
@@ -836,4 +823,25 @@ public class VistaPrevia extends AppCompatActivity {
         });
         builder.show();
     }
+    private void selectImage() {
+        Intent intent=new Intent();
+        intent.setType("image/*");// if you want to you can use pdf/gif/video
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        someActivityResultLauncher.launch(intent);
+
+    }
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                        imagePath=data.getData();
+                        Picasso.get().load(imagePath).into(iv1);
+
+                    }
+                }
+            });
 }
