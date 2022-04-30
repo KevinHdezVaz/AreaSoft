@@ -5,8 +5,8 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -17,6 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Vistaprevia2"
+            android:exported="true" />
+        <activity
+            android:name=".camaraGalle"
+            android:exported="true"  >
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+    </activity>
+
         <activity
             android:name=".vistaPick"
             android:exported="false" />
@@ -38,18 +53,15 @@
         </activity>
         <activity
             android:name=".MainActivityPrincipal"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarPrincipal"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBarPrincipal" />
         <activity
             android:name=".VistaPrevia"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".web2"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -133,6 +145,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.windows10.leerimagen.RecuentoKi67Activity" />
         </activity>
+
+        <meta-data
+            android:name="CLOUDINARY_URL"
+            android:value="cloudinary://716775653773615:8DT7Rl0o0Ts3cWE0U1vTDfJq1po@hevaz" />
     </application>
 
 </manifest>

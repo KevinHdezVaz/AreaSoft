@@ -14,16 +14,16 @@
     android:keepScreenOn="true"
     tools:showIn="@layout/activity_main_drawer">
 
-    <androidx.appcompat.widget.Toolbar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.appcompat.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        >
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -49,4 +49,20 @@
         android:elevation="10dp"
         android:onClick="foto"
         android:src="@drawable/ic_camera" />
-</RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/botonupload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="40dp"
+
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/transparent"
+        android:elevation="10dp"
+        android:onClick="foto"
+        android:src="@drawable/upload" />
+
+
+ </RelativeLayout>

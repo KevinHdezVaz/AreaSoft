@@ -1,13 +1,17 @@
 package com.example.windows10.leerimagen;
 
+import static com.example.windows10.leerimagen.Filtros.TAG;
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.app.TaskStackBuilder;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,8 +20,10 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -44,11 +50,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
+import com.devhoony.lottieproegressdialog.LottieProgressDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -61,18 +74,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class VistaPrevia extends AppCompatActivity {
 
-    /*
-    int[][] r;
-    int[][] g;
-    int[][] b;
-    int[][] a;
-    int[][] gr;
-    */
-
-///Inicializacion de parámetros./////////////////////////////////////////////////////////////////////
 
     int r,g,b,a,gr;
 
@@ -86,8 +93,16 @@ public class VistaPrevia extends AppCompatActivity {
     boolean  destruido=false;
     int grados=90;
     Spinner s1;
+    ImageView cerrar ;
 
+
+    public static final int REQUEST_CODE_TAKE_PHOTO = 0 /*1*/;
+    private String mCurrentPhotoPath;
+    private Uri photoURI;
     int[] pixels;
+        Map config = new HashMap();
+    Dialog epicDialog,epicDialog2;
+    ImageButton button;
 
     private Uri imagePath;
     final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE=2;
@@ -95,13 +110,15 @@ public class VistaPrevia extends AppCompatActivity {
     final int SELECT_PICTURE=8;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-    DrawerLayout drawerLayout;
-    NavigationView navView;
+
+
+
     NotificationCompat.Builder mBuilder;
     private int REQUEST_CROP_ICON=16;
-    public static Uri selectedImage;
+     public static Uri selectedImage;
     static boolean AgregarMuestra=false;
-
+ImageButton buttonupload;
+Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,55 +132,21 @@ public class VistaPrevia extends AppCompatActivity {
 
 
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        drawerLayout.setDrawerListener(toggle);
-        toggle.syncState();
 
-        navView=(NavigationView)findViewById(R.id.navview);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+        button = findViewById(R.id.button);
 
-                    case R.id.nav_camera:
-                        //item.setChecked(true);
-                        foto(null);
-                       // getSupportActionBar().setTitle(item.getTitle());
-                        break;
-                    case R.id.nav_gallery:
-                        //item.setChecked(true);
-                       // abrirImagen(null);
+        buttonupload = findViewById(R.id.botonupload);
+        buttonupload.setEnabled(false);
 
-                        selectImage();
-                        //getSupportActionBar().setTitle(item.getTitle());
-                        break;
-                    case R.id.guardarImagen:
-                        //item.setChecked(true);
-                        guardarImagen(null);
-                        //getSupportActionBar().setTitle(item.getTitle());
-                        break;
-                    case R.id.nav_share:
-                        //item.setChecked(true);
-                        if(currentFileName!=null) {
-                            final Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                            shareIntent.setType("image/jpg");
-                            final File photoFile = new File(currentFileName);
-                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(photoFile));
-                            startActivity(Intent.createChooser(shareIntent, "Eliga donde compartir"));
-                        }else{
-                            Toast.makeText(VistaPrevia.this, "No existe imagen previa", Toast.LENGTH_SHORT).show();
-                        }
-                        //getSupportActionBar().setTitle(item.getTitle());
-                        break;
-                }
-                drawerLayout.closeDrawers();
-                return true;
-            }
+
+        buttonupload.setOnClickListener(view -> {
+      metodoenviarimagenCamara();
+      mostrarInfo();
+
         });
+
+
 
         // setTitle("Imagen Previa");
 
@@ -202,103 +185,6 @@ public class VistaPrevia extends AppCompatActivity {
         });
 
 
-///Al realizar un click largo aparece un cuadro de dialogo para seleccionar los grados de rotación.////////////
-///*
-//        iv1.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//
-//                final AlertDialog.Builder builder=new AlertDialog.Builder(VistaPrevia.this);
-//                builder.setTitle("¿Quieres rotar la imagen?");
-//
-//                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String [] items={"90°","180°","270°"};
-//                        final AlertDialog.Builder builder=new AlertDialog.Builder(VistaPrevia.this);
-//                        builder.setTitle("Seleccione los grados de rotación");
-//                        builder.setItems(items, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                switch (which){
-//                                    case 0:
-//                                        rotarImagen(90);
-//                                        break;
-//                                    case 1:
-//
-//                                        rotarImagen(180);
-//                                        break;
-//                                    case 2:
-//                                        rotarImagen(270);
-//                                        break;
-//                                }
-//                            }
-//                        });
-//                        builder.show();
-//                    }
-//                });
-//                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                builder.show();
-//                return true;
-//            }
-//        });
-//        */
-
-/////////Es un Spinner que contiene la lista de ediciones////////////////////////////////////////////
-
-//        /*
-//        List list=new ArrayList();
-//        list.add("None");
-//        list.add("Editar");
-//        list.add("Aplicar filtro");
-//        list.add("Guardar imagen");
-//        list.add("Abrir imagen");
-//
-//        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,list);
-//        s1.setAdapter(arrayAdapter);
-//
-//        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                switch (position){
-//                    case 0:
-//                        break;
-//                    case 1:
-//                        editar(null);
-//                        break;
-//                    case 2:
-//                        aplicarFiltro(null);
-//                        break;
-//                    case 3:
-//                        guardarImagen(null);
-//                        break;
-//                    case 4:
-//                        abrirImagen(null);
-//
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//        */
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //imagen= BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher);
-        //iv1.setImageBitmap(imagen);
-
-
-///Algoritomo de manejo de permisos/////////////////////////////////////////////////////////////////////////////////
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -353,12 +239,8 @@ public class VistaPrevia extends AppCompatActivity {
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void abrirImagen(View v){
 
-        Intent i=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        i.setType("image/*");
-        startActivityForResult(i,SELECT_PICTURE);
-    }
+
 
 ///Método que realiza la extracción de cada pixel del bitmap par
 /// a luego extraerle el ARGB.
@@ -443,15 +325,155 @@ public class VistaPrevia extends AppCompatActivity {
 
 ///Método que abre la cámara, realiza una captura y guarda la imagen en la ubicación definida previamente.////
 
-    public void foto(View v){
 
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        someActivityResultLauncher.launch(takePictureIntent);
+
+    public void foto(View v) {
+
+                dispatchTakePictureIntent();
+
+
     }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.TITLE, "MyPicture");
+                values.put(MediaStore.Images.Media.DESCRIPTION, "Photo taken on " + System.currentTimeMillis());
+                photoURI = getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+                //Uri photoURI = FileProvider.getUriForFile(AddActivity.this, "com.example.android.fileprovider", photoFile);
+
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_CODE_TAKE_PHOTO);
+
+                buttonupload.setEnabled(true);
+            }
+        }
+    }
+
+public void metodoenviarimagenCamara()
+{
+//envia la imagen de la galeria al servidor
+    Log.d(TAG, ": "+" button clicked");
+    MediaManager.get().upload(photoURI).callback(new UploadCallback() {
+        @Override
+        public void onStart(String requestId) {
+            Log.d(TAG, "onStart: "+"started");
+
+
+        }
+
+        @Override
+        public void onProgress(String requestId, long bytes, long totalBytes) {
+            Log.d(TAG, "onStart: "+"uploading");
+
+
+        }
+
+        @Override
+        public void onSuccess(String requestId, Map resultData) {
+            Log.d(TAG, "onStart: "+"usuccess");
+
+            Toast.makeText(VistaPrevia.this, Objects.requireNonNull(resultData.get("url")).toString(), Toast.LENGTH_SHORT).show();
+
+            epicDialog.dismiss();
+            Intent intent = new Intent(VistaPrevia.this, web2.class);
+             intent.putExtra("Clave", Objects.requireNonNull(resultData.get("url")).toString());
+            startActivity(intent);
+
+        }
+
+        @Override
+        public void onError(String requestId, ErrorInfo error) {
+            Log.d(TAG, "onStart: "+error);
+            Toast.makeText(VistaPrevia.this, "Error", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onReschedule(String requestId, ErrorInfo error) {
+            Log.d(TAG, "onStart: "+error);
+        }
+    }).dispatch();
+
+
+
+}
+
+
+    public void mostrarInfo(){
+
+        epicDialog = new Dialog(this);
+        epicDialog.setContentView(R.layout.about2);
+
+
+        epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        epicDialog.show();
+
+
+
+
+
+
+    }
+
+
+
+
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_TAKE_PHOTO && resultCode == RESULT_OK) {
+
+            Bitmap bitmap;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
+                iv1.setImageBitmap(bitmap);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+        }
+    }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////Se crea la dirección y el nombre completo de la foto.//////////////////////////////////////////////////
 
     public  File createFilePath() {
 
@@ -488,59 +510,7 @@ public class VistaPrevia extends AppCompatActivity {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////Manejo del resultado de la cámara./////////////////////////////////////////////////////////////////////
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            //Toast.makeText(this,"Imagen guardada en: "+currentFileName,Toast.LENGTH_LONG).show();
 
-
-
-            // selectedImage=data.getData();
-            setPic();
-            galleryAddPic();
-            invalidateOptionsMenu();
-        }
-        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK) {
-
-            if (imagen != null)
-                imagen.recycle();
-
-            selectedImage = data.getData();
-
-            InputStream is;
-            try {
-                is = getContentResolver().openInputStream(selectedImage);
-                BufferedInputStream bis = new BufferedInputStream(is);
-                imagen = BitmapFactory.decodeStream(bis);
-                String path = getRealPathFromUri(selectedImage);
-                Bitmap imagenRotada = null;
-                try {
-                    imagenRotada = rotateImageIfRequired(imagen, path);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //imagen.recycle();
-                imagen = imagenRotada;
-                iv1.setImageBitmap(imagen);
-                guardarEnCache();
-                invalidateOptionsMenu();
-            } catch (FileNotFoundException e) {
-            }
-
-        }
-        if (requestCode == REQUEST_CROP_ICON && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            if (extras != null) {
-                Bitmap photo = extras.getParcelable("data");
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                photo.compress(Bitmap.CompressFormat.JPEG, 75, stream);
-                // The stream to write to a file or directly using the
-            }
-        }
-        if (requestCode == SELECT_PICTURE && resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "No seleccionó ninguna imagen", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -768,10 +738,7 @@ public class VistaPrevia extends AppCompatActivity {
             case R.id.rotarIzquierda:
                 rotarImagen(-90);
                 break;
-            case R.id.abrirImagen:
-               // abrirImagen(null);
-                selectImage();
-                break;
+
             case R.id.recuentoKi67A:
                 Intent intentRecuentoA= new Intent(this, RecuentoKi67Activity.class);
                 startActivity(intentRecuentoA);
@@ -828,6 +795,8 @@ public class VistaPrevia extends AppCompatActivity {
         intent.setType("image/*");// if you want to you can use pdf/gif/video
         intent.setAction(Intent.ACTION_GET_CONTENT);
         someActivityResultLauncher.launch(intent);
+        buttonupload.setEnabled(true);
+
 
     }
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(

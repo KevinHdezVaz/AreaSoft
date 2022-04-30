@@ -5,19 +5,38 @@
       <map>
         <entry key="app/src/main/res/drawable/color_imagen.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/about2.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/acercade2.xml" value="0.32916666666666666" />
+        <entry key="app/src/main/res/layout/activity_calibraciones_realizadas.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_camara_galle.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_cortar_imagen.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/activity_filtros.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_ki67_comparativa.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.17889492753623187" />
         <entry key="app/src/main/res/layout/activity_main3.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_main_drawer.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_main_principal.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/activity_main_visualizar_foto.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/activity_mediciones_cuantitativas.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_recuento_k67_automatico.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_recuento_ki67.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_vista_pick.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/activity_vistaprevia2.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_web2.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/ayuda.xml" value="0.160081053698075" />
         <entry key="app/src/main/res/layout/content_main_activity_principal.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/header_navview.xml" value="0.3296875" />
+        <entry key="app/src/main/res/layout/list_item_calibraciones_previas.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3296875" />
+        <entry key="app/src/main/res/menu/menu2.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_ctx_lista.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_edicion.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_filtros.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_ki67.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_ki67_manual.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_ki67_obtener_color.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/menu/menu_mediciones_cuantitativas.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/menu/menu_navview.xml" value="0.32916666666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3458333333333333" />
       </map>

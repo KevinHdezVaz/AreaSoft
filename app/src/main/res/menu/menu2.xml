@@ -20,12 +20,7 @@
         android:icon="@drawable/ic_crop"
         app:showAsAction="never"
         />
-    <item
-        android:title="Abrir imagen desde la galería"
-        android:id="@+id/abrirImagen"
-        android:icon="@drawable/ic_action_galeria"
-        app:showAsAction="ifRoom"
-        />
+
 
     <item android:title="Rotar imagen"
         android:id="@+id/rotar">
