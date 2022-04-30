@@ -64,6 +64,7 @@ import com.cloudinary.android.callback.UploadCallback;
 import com.devhoony.lottieproegressdialog.LottieProgressDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
+import com.tfb.fbtoast.FBToast;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -77,6 +78,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class VistaPrevia extends AppCompatActivity {
 
@@ -146,8 +150,6 @@ Intent intent;
 
         });
 
-
-
         // setTitle("Imagen Previa");
 
         iv1=(ImageView)findViewById(R.id.iv1);
@@ -158,6 +160,31 @@ Intent intent;
         if(currentFileName!=null) {
             imagen = BitmapFactory.decodeFile(currentFileName);
             iv1.setImageBitmap(imagen);
+        }
+        if(isFirstTime()){
+
+            ShowcaseConfig config2 = new ShowcaseConfig();
+            config2.setMaskColor(getResources().getColor(R.color.purple_500));
+            config2.setRenderOverNavigationBar(true);
+            config2.setDelay(500);
+
+            final MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(VistaPrevia.this, "sacatepec");
+            sequence.setConfig(config2);
+            button.post(new Runnable() {
+                @Override
+                public void run() {
+                    sequence.addSequenceItem(button,"Para capturar una imagen, toca este icono.","->CONTINUAR");
+
+                    sequence.addSequenceItem(buttonupload,"Ya tomada la fotografia, toca este icono para cargar la imagen y posteriormente procesarla. :)","->CONTINUAR");
+
+
+
+                    sequence.start();
+                }
+            });
+
+
+
         }
 
         iv1.setOnClickListener(new View.OnClickListener() {
@@ -245,7 +272,18 @@ Intent intent;
 ///Método que realiza la extracción de cada pixel del bitmap par
 /// a luego extraerle el ARGB.
 ///Posteriormente se promedia el rgb y se lo setea a cada pixel de la imagen.
-
+private boolean isFirstTime()
+{
+    SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+    boolean ranBefore = preferences.getBoolean("RanBefore2", false);
+    if (!ranBefore) {
+        // first time
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("RanBefore2", true);
+        editor.commit();
+    }
+    return !ranBefore;
+}
     public void aplicarFiltro(View v){
         if(imagen!=null) {
             Intent intent = new Intent(this, Filtros.class);
@@ -387,7 +425,7 @@ public void metodoenviarimagenCamara()
         public void onSuccess(String requestId, Map resultData) {
             Log.d(TAG, "onStart: "+"usuccess");
 
-            Toast.makeText(VistaPrevia.this, Objects.requireNonNull(resultData.get("url")).toString(), Toast.LENGTH_SHORT).show();
+            FBToast.successToast(VistaPrevia.this,"Cargando...", FBToast.LENGTH_LONG);
 
             epicDialog.dismiss();
             Intent intent = new Intent(VistaPrevia.this, web2.class);
@@ -421,7 +459,7 @@ public void metodoenviarimagenCamara()
 
         epicDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         epicDialog.show();
-
+epicDialog.setCancelable(false);
 
 
 

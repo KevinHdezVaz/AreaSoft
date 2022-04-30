@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661497534103",
+    "project_id": "areasoft-176d7",
+    "storage_bucket": "areasoft-176d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661497534103:android:34e9f45f01dae2552dfbd2",
+        "android_client_info": {
+          "package_name": "com.example.windows10.leerimagen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661497534103-1f8iuom78gff529cach9m4b1t4lbd94g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVbUtYxV7k8hFQFEh95ykHsgW6E0wQmMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661497534103-1f8iuom78gff529cach9m4b1t4lbd94g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
