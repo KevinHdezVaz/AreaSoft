@@ -1,6 +1,7 @@
 package com.example.windows10.leerimagen;
 
-import static com.example.windows10.leerimagen.Filtros.TAG;
+
+import static com.example.windows10.leerimagen.RecortarAutomatico.TAG;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -25,6 +26,8 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -145,8 +148,22 @@ Intent intent;
 
 
         buttonupload.setOnClickListener(view -> {
-      metodoenviarimagenCamara();
-      mostrarInfo();
+
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                // Si hay conexión a Internet en este momento
+
+                metodoenviarimagenCamara();
+                mostrarInfo();
+
+            } else {
+                // No hay conexión a Internet en este momento
+                FBToast.errorToast(VistaPrevia.this,"Necesitas conexión a internet para continuar", FBToast.LENGTH_LONG);
+
+
+            }
 
         });
 
@@ -210,7 +227,6 @@ Intent intent;
 
             }
         });
-
 
 
         if (ContextCompat.checkSelfPermission(this,
@@ -283,80 +299,14 @@ private boolean isFirstTime()
         editor.commit();
     }
     return !ranBefore;
-}
-    public void aplicarFiltro(View v){
-        if(imagen!=null) {
-            Intent intent = new Intent(this, Filtros.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(this,"No existe imagen previa",Toast.LENGTH_SHORT).show();
-        }
 
-    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-    private void guardarEnCache() {
-
-         nameFileDirectory="HistoSoft"+"/";
-
-
-        File file = new File(getExternalCacheDir(), "imagenCache"+nameFileDirectory);
-        file.mkdirs();
-        if (!file.mkdirs()) {
-            Log.e("directorio", "Directory not created");
-            Toast.makeText(this, "directorio no creado", Toast.LENGTH_SHORT).show();
-        }
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("ddMMyyyyhhmmss");
-        String date=simpleDateFormat.format(new Date());
-        String name="img"+date+".jpg";
-        String file_name=file.getAbsolutePath()+"/"+name;
-        File new_file=new File(file_name);
-
-        currentFileName=new_file.getAbsolutePath();
-        selectedImage=Uri.fromFile(new_file);
-
-        FileOutputStream outputStream = null;
-
-        try {
-            outputStream = new FileOutputStream(new_file);
-            //lo coloca en el c
-            imagen.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-            outputStream.flush();
-            outputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///Método que guarda la imagen en un directorio especifico de la memoria externa.////////////////////
 
-    public void guardarImagen(View v){
-        if(imagen!=null) {
-            FileOutputStream outputStream = null;
-            File file =createFilePath();
-            currentFileName=file.getAbsolutePath();
-            try {
-                outputStream = new FileOutputStream(file);
-                imagen.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                Toast.makeText(this, "Imagen guardada", Toast.LENGTH_SHORT).show();
-                outputStream.flush();
-                outputStream.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            galleryAddPic();
-
-        }else{
-
-            Toast.makeText(this,"No existe imagen previa",Toast.LENGTH_SHORT).show();
-
-        }
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -398,6 +348,8 @@ private boolean isFirstTime()
                 startActivityForResult(takePictureIntent, REQUEST_CODE_TAKE_PHOTO);
 
                 buttonupload.setEnabled(true);
+
+
             }
         }
     }
@@ -587,7 +539,7 @@ epicDialog.setCancelable(false);
         }
         imagen=imagenRotada;
         iv1.setImageBitmap(imagen);
-        guardarEnCache();
+
         //}else{}
         //Drawable imagen2=Drawable.createFromPath(mCurrentPhotoPath);
         //mImageView.setImageDrawable(imagen2);
@@ -653,7 +605,7 @@ epicDialog.setCancelable(false);
         //imagen.recycle();
         imagen = bitmap;
         iv1.setImageBitmap(imagen);
-        guardarEnCache();
+
     }else{
         Toast.makeText(this,"No existe imagen previa",Toast.LENGTH_SHORT).show();
     }
@@ -720,7 +672,7 @@ epicDialog.setCancelable(false);
                             if(!(imagenCortada==null)){
                                 imagen=imagenCortada.copy(Bitmap.Config.ARGB_8888,true);
                                 imagenCortada.recycle();
-                                guardarEnCache();
+
                             }else{
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -747,8 +699,7 @@ epicDialog.setCancelable(false);
                 if(currentFileName != null) {
 //                    if(imagen!=null)
 //                        imagen.recycle();
-                    Intent intentMedir = new Intent(this, MedicionesCuantitativas.class);
-                    startActivity(intentMedir);
+
                 }else{
                     Toast.makeText(this,"No existe imagen previa...",Toast.LENGTH_SHORT).show();
                 }
@@ -765,7 +716,7 @@ epicDialog.setCancelable(false);
             case R.id.aplicarFiltro:
 //                if(imagen!=null)
 //                    imagen.recycle();
-                aplicarFiltro(null);
+
                 break;
 //            case R.id.guardarImagen:
 //                guardarImagen(null);
@@ -778,9 +729,7 @@ epicDialog.setCancelable(false);
                 break;
 
             case R.id.recuentoKi67A:
-                Intent intentRecuentoA= new Intent(this, RecuentoKi67Activity.class);
-                startActivity(intentRecuentoA);
-                break;
+                 break;
             case R.id.recuentoKi67M:
                 Intent intentRecuentoM= new Intent(this, RecuentoKi67ManualActivity.class);
                 startActivity(intentRecuentoM);

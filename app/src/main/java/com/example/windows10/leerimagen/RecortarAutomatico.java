@@ -8,15 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 
-import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.core.Size;
-import org.opencv.imgproc.Imgproc;
 
 
 public class RecortarAutomatico{
@@ -27,6 +18,8 @@ public class RecortarAutomatico{
 
     public static final String TAG="MainActivityPrincipal";
 
+    /*
+    inicializa opencv
     static{
         if(OpenCVLoader.initDebug()){
             Log.d(TAG,"Cargo exitosamente :)");
@@ -35,13 +28,14 @@ public class RecortarAutomatico{
     }
 
 
+     */
+
     public RecortarAutomatico(){
     }
     public static Bitmap recortarImagenAutomatico(Context context,Bitmap imagen,float densidad) {
 
         Bitmap imagenReducida;
         int reduccion;
-        Mat mask;
 
         if (imagen.getWidth() * imagen.getHeight() > 2000000 && imagen.getWidth() * imagen.getHeight() < 8000000) {
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -66,39 +60,7 @@ public class RecortarAutomatico{
             imagenReducida = BitmapFactory.decodeFile(VistaPrevia.currentFileName, options);
         }
 
-        Mat imagenMatriz = new Mat();
-        Mat imagenMatrizProcesada;
-
-        Utils.bitmapToMat(imagenReducida, imagenMatriz);
-        imagenMatrizProcesada = imagenMatriz.clone();
-        Imgproc.cvtColor(imagenMatriz, imagenMatrizProcesada, Imgproc.COLOR_RGB2GRAY);
-//        Imgproc.filter2D(imagenMatrizProcesada,imagenMatrizProcesada,-1,kernel);
-
-        imagenMatrizProcesada.convertTo(imagenMatrizProcesada, imagenMatrizProcesada.type(), 2, 0);
-        imagenMatrizProcesada.convertTo(imagenMatrizProcesada, imagenMatrizProcesada.type(), 2, -200);
-
-//
-        Imgproc.threshold(imagenMatrizProcesada, imagenMatrizProcesada, 0, 255, Imgproc.THRESH_BINARY+Imgproc.THRESH_OTSU);
-
-        Imgproc.dilate(imagenMatrizProcesada, imagenMatrizProcesada, Imgproc.getStructuringElement(Imgproc.CV_SHAPE_ELLIPSE, new Size(3, 3)));
-        Imgproc.erode(imagenMatrizProcesada, imagenMatrizProcesada, Imgproc.getStructuringElement(Imgproc.CV_SHAPE_ELLIPSE, new Size(3, 3)));
-
-        mask=Mat.zeros(imagenMatrizProcesada.rows()+2,imagenMatrizProcesada.cols()+2, CvType.CV_8U);
-
-        Mat pruebaFill=new Mat();
-        pruebaFill.convertTo(pruebaFill,CvType.CV_32S);
-        Mat imMPO=new Mat();
-        imMPO=imagenMatrizProcesada.clone();
-
-        Imgproc.floodFill(imagenMatrizProcesada, mask, new Point(0, 0), new Scalar(255));
-        Core.bitwise_not(imagenMatrizProcesada,imagenMatrizProcesada);
-        Core.add(imMPO,imagenMatrizProcesada,imagenMatrizProcesada);
-
-        Utils.matToBitmap(imagenMatrizProcesada, imagenReducida);
-
-        byte buff[] = new byte[(int)imagenMatrizProcesada.total() * imagenMatrizProcesada.channels()];
-        imagenMatrizProcesada.get(0, 0, buff);
-
+    
         int ancho=0;
         int alto=0;
         int pixel;

@@ -5,7 +5,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -80,23 +80,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".Filtros"
-            android:parentActivityName=".VistaPrevia"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
-        </activity>
-        <activity
-            android:name=".MedicionesCuantitativas"
-            android:parentActivityName=".VistaPrevia"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarPrincipal">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
-        </activity>
-        <activity
             android:name=".CortarImagen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBarPrincipal" />
@@ -112,14 +95,6 @@
             android:name=".CalibracionesRealizadasActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RecuentoKi67Activity"
-            android:parentActivityName=".VistaPrevia"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
-        </activity>
-        <activity
             android:name=".RecuentoKi67ManualActivity"
             android:parentActivityName=".VistaPrevia"
             android:screenOrientation="portrait"
@@ -128,23 +103,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.windows10.leerimagen.VistaPrevia" />
         </activity>
-        <activity
-            android:name=".Ki67ObtenerColorActivity"
-            android:parentActivityName=".RecuentoKi67Activity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarPrincipal">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.RecuentoKi67Activity" />
-        </activity>
-        <activity
-            android:name=".Ki67ComparativaActivity"
-            android:parentActivityName=".RecuentoKi67Activity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.RecuentoKi67Activity" />
-        </activity>
+
 
         <meta-data
             android:name="CLOUDINARY_URL"

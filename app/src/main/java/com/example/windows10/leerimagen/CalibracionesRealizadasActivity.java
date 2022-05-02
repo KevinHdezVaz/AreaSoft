@@ -140,8 +140,6 @@ public class CalibracionesRealizadasActivity extends AppCompatActivity {
                 editor.putString("escala",calibracionCargada.getEscala());
                 editor.apply();
 
-                Intent intent=new Intent(CalibracionesRealizadasActivity.this,MedicionesCuantitativas.class);
-                startActivity(intent);
                 finish();
             }
         });

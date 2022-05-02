@@ -5,7 +5,10 @@
       <map>
         <entry key="app/src/main/res/drawable/color_imagen.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout-land/about23.xml" value="0.2826278659611993" />
+        <entry key="app/src/main/res/layout-land/about24.xml" value="0.2826278659611993" />
         <entry key="app/src/main/res/layout/about2.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/about23.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/acercade2.xml" value="0.32916666666666666" />
         <entry key="app/src/main/res/layout/activity_calibraciones_realizadas.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_camara_galle.xml" value="0.3338541666666667" />

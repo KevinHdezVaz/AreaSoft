@@ -1,6 +1,7 @@
 package com.example.windows10.leerimagen;
 
-import static com.example.windows10.leerimagen.Filtros.TAG;
+
+import static com.example.windows10.leerimagen.RecortarAutomatico.TAG;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +23,8 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ExifInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -76,8 +80,24 @@ LottieAnimationView animacion;
 
         button.setOnClickListener(view -> selectImage());
         buttonupload2.setOnClickListener(view -> {
-            metodoenviarimagenCamara();
-            mostrarInfo();
+
+
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                // Si hay conexión a Internet en este momento
+
+                metodoenviarimagenCamara();
+                mostrarInfo();
+
+            } else {
+                // No hay conexión a Internet en este momento
+                FBToast.errorToast(Vistaprevia2.this,"Necesitas conexión a internet para continuar", FBToast.LENGTH_LONG);
+
+
+            }
+
         });
 
         if(isFirstTime()){
@@ -161,6 +181,7 @@ LottieAnimationView animacion;
         buttonupload2.setEnabled(true);
 
 animacion.setVisibility(View.GONE);
+
     }
 
 

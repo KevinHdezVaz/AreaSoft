@@ -74,7 +74,6 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
         lL1=(LinearLayout)findViewById(R.id.lL1);
 
         iv1.setImageBitmap(VistaPrevia.imagen);
-        iv2.setImageBitmap(RecuentoKi67Activity.imBitmapJuntas);
 
 
     }
