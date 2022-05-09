@@ -1,4 +1,4 @@
-package com.example.windows10.leerimagen;
+package com.app.cacomplex.vaz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,9 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spannable;
-import android.view.View;
 import android.widget.Button;
 
 import com.cloudinary.android.MediaManager;
@@ -18,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
-import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class camaraGalle extends AppCompatActivity {

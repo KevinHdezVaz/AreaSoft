@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:padding="5dp"
     android:weightSum="1"
-    tools:context="com.example.windows10.leerimagen.Ki67ComparativaActivity">
+    tools:context="com.app.cacomplex.vaz.Ki67ComparativaActivity">
 
     <ImageView
         android:id="@+id/iv1"

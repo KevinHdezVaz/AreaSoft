@@ -1,10 +1,7 @@
-package com.example.windows10.leerimagen;
-
-import static android.content.ContentValues.TAG;
+package com.app.cacomplex.vaz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -15,25 +12,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.util.EncodingUtils;
 import com.tfb.fbtoast.FBToast;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class web2 extends AppCompatActivity {
     private ValueCallback mUM;

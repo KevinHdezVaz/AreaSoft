@@ -1,23 +1,23 @@
-package com.example.windows10.leerimagen;
+package com.app.cacomplex.vaz;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
-import androidx.annotation.RequiresApi;
+import android.os.Bundle;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.core.view.MotionEventCompat;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class Ki67ComparativaActivity extends AppCompatActivity {
+public class MainActivityVisualizarFoto extends AppCompatActivity {
 
-    private ImageView iv1,iv2;
-    private LinearLayout lL1;
-    //////////////////////////////////////////
     private View decorView;
     private GestureDetectorCompat mDetector;
     private boolean oculto;
@@ -56,26 +56,197 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
     float minScale = 1.f;
     float maxScale = 8.f;
     int viewWidth, viewHeight;
+    private Imagen imagen;
     /////////////////////////////////////////
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ki67_comparativa);
-
-        mScaleDetector = new ScaleGestureDetector(this, new ScaleListener());
-
-        getSupportActionBar().setTitle("Comparativa");
+        setContentView(R.layout.activity_main_visualizar_foto);
+        getSupportActionBar().setTitle("Ver imagen");
+        Drawable fondo = getResources().getDrawable(R.drawable.fondo);
+        getSupportActionBar().setBackgroundDrawable(fondo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        iv1=(ImageView)findViewById(R.id.iv1);
-        iv2=(ImageView)findViewById(R.id.iv2);
-        lL1=(LinearLayout)findViewById(R.id.lL1);
+        linearLayout1=(LinearLayout)findViewById(R.id.linearLayout1);
 
-        iv1.setImageBitmap(VistaPrevia.imagen);
+        decorView = getWindow().getDecorView();
+        //Hace que desaparezca el Status Bar, el navigation bar y action bar
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
+
+        oculto=true;
+
+        mScaleDetector = new ScaleGestureDetector(this, new ScaleListener());
+        mDetector = new GestureDetectorCompat(this, new GestureDetector.OnGestureListener() {
+
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                Log.i("onSingle","entro");
+                if(!oculto) {
+                    decorView.setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                                    | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                                    | View.SYSTEM_UI_FLAG_IMMERSIVE);
+                    oculto=true;
+                }else {
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    getSupportActionBar().show();
+                    oculto=false;
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                return false;
+            }
+        });
+        decorView.setOnSystemUiVisibilityChangeListener
+                (new View.OnSystemUiVisibilityChangeListener() {
+                    @Override
+                    public void onSystemUiVisibilityChange(int visibility) {
+                        // Note that system bars will only be "visible" if none of the
+                        // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+                        if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                            // TODO: The system bars are visible. Make any desired
+                            // adjustments to your UI, such as showing the action bar or
+                            // other navigational controls.
+                            //getSupportActionBar().show();
+
+                        } else {
+                            // TODO: The system bars are NOT visible. Make any desired
+                            // adjustments to your UI, such as hiding the action bar or
+                            // other navigational controls.
+                            getSupportActionBar().hide();
+                        }
+                    }
+                });
+        imagen=new Imagen(this);
+        linearLayout1.addView(imagen);
 
 
+
+    }
+
+    public class Imagen extends View{
+        Drawable image;
+        private float R1;
+        private float R2;
+        private int ancho;
+        private int alto;
+        private int altoInicial;
+        private int altoFinal;
+        private int anchoInicial;
+        private int anchoFinal;
+
+
+        public Imagen(Context context) {
+            super(context);
+//            setScaleType(ScaleType.CENTER_INSIDE);
+            if (VistaPrevia.currentFileName!=null) {
+                image= new BitmapDrawable(getResources(), VistaPrevia.imagen);
+                setBackground(image);
+            }
+            else {
+              //  image = getResources().getDrawable(R.drawable.ic_image_black_36dp);
+
+
+                //setBackground(image);
+            }
+
+
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            
+            float imagenX=image.getIntrinsicWidth();
+            float imagenY=image.getIntrinsicHeight();
+
+            R1=imagenY/imagenX;
+
+            float w=canvas.getWidth();
+            float h=canvas.getHeight();
+            R2=h/w;
+
+            ancho=0;
+            alto=0;
+            altoInicial=0;
+            altoFinal=0;
+            anchoInicial=0;
+            anchoFinal=0;
+
+            if ((R1 > R2) && ((R1-R2)>0.02)) {
+                ancho = (int) (h / R1);
+                alto = (int) h;
+
+                anchoInicial = (int) (w / 2 - ancho/ 2);
+                anchoFinal = (int) (w / 2 + ancho / 2);
+                if(Build.VERSION.SDK_INT==Build.VERSION_CODES.LOLLIPOP)
+                {
+                    //image.setBounds(anchoInicial/2,0,ancho+anchoInicial/2,alto);
+                    image.setBounds(0,0,ancho,alto);
+                }else {
+                    image.setBounds(anchoInicial,0,anchoFinal,alto);
+                }
+
+            }
+            if ((R1 < R2) && ((R2-R1)>0.05)) {
+                ancho = (int) w;
+                alto = (int) (R1 * w);
+                image.setBounds(0,0,ancho,alto);
+
+                altoInicial = (int) (h / 2 - alto / 2);
+                altoFinal = (int) (h / 2 + alto / 2);
+                if(Build.VERSION.SDK_INT==Build.VERSION_CODES.LOLLIPOP)
+                {
+                    //image.setBounds(0,altoInicial/2,ancho,alto+altoInicial/2);
+                    image.setBounds(0,0,ancho,alto);
+                }else {
+                    image.setBounds(0, altoInicial, ancho, altoFinal);
+                }
+            }
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent event) {
+            super.onTouchEvent(event);
+            mDetector.onTouchEvent(event);
+            return false;
+        }
     }
     private class ScaleListener
             extends ScaleGestureDetector.SimpleOnScaleGestureListener {
@@ -110,8 +281,8 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
             }
 
 
-            viewWidth  = lL1.getWidth();
-            viewHeight = lL1.getHeight();
+            viewWidth  = imagen.getWidth();
+            viewHeight = imagen.getHeight();
             mContentViewX = viewWidth*mScaleFactor;
             mContentViewY = viewHeight*mScaleFactor;
 
@@ -127,14 +298,14 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
             }
 
             Log.i("Pivot", "x: " + String.valueOf(focusPrevioX) + " " +  String.valueOf(focusX) +
-                    " " + String.valueOf(lL1.getPivotX()));
+                    " " + String.valueOf(imagen.getPivotX()));
 
             //Zoom a vista
-            lL1.setScaleX(mScaleFactor);
-            lL1.setScaleY(mScaleFactor);
+                imagen.setScaleX(mScaleFactor);
+                imagen.setScaleY(mScaleFactor);
 
 
-            //Calculo de la distancia que debe trasladarse la lL1 cuando se realiza zoom.
+            //Calculo de la distancia que debe trasladarse la imagen cuando se realiza zoom.
             xFocusContent = focusPrevioX*mScaleFactor;
             yFocusContent = focusPrevioY*mScaleFactor;
 
@@ -160,8 +331,8 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
             }
             //Cambio de Pivot y Permite suavizarlo.
             if ((Math.abs((focusX - focusPrevioX)/mScaleFactor)) > 0 && (Math.abs((focusY - focusPrevioY)/mScaleFactor)) > 0) {
-                lL1.setPivotX(focusPrevioX);
-                lL1.setPivotY(focusPrevioY);
+                imagen.setPivotX(focusPrevioX);
+                imagen.setPivotY(focusPrevioY);
                 focusPrevioX += ((focusX - focusPrevioX)/mScaleFactor) * Math.abs(mScaleFactor-origScale)*0.5;
                 focusPrevioY += ((focusY - focusPrevioY)/mScaleFactor) * Math.abs(mScaleFactor-origScale)*0.5;
             }
@@ -171,41 +342,42 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
                     vista.setTranslationY(0);
                 }
                 */
-            //Reacomoda la lL1 cuando se realiza el zoom out
+            //Reacomoda la imagen cuando se realiza el zoom out
             if((origScale-mScaleFactor)>0) {
                 if (mPosX > xTransMin) {
                     mPosX = xTransMin;
-                    lL1.setTranslationX(mPosX);
+                    imagen.setTranslationX(mPosX);
                 }
                 if (-mPosX > xTransMax) {
                     mPosX = -xTransMax;
-                    lL1.setTranslationX(mPosX);
+                    imagen.setTranslationX(mPosX);
                 }
                 if (mPosY > yTransMin) {
                     mPosY = yTransMin;
-                    lL1.setTranslationY(mPosY);
+                    imagen.setTranslationY(mPosY);
                 }
                 if (-mPosY > yTransMax) {
                     mPosY = -yTransMax;
-                    lL1.setTranslationY(mPosY);
+                    imagen.setTranslationY(mPosY);
                 }
             }
 
             Log.i("trans", "xTransMax: "+ String.valueOf(xTransMax)+ " xTransMin: " + String.valueOf(xTransMin)+
                     " yTransMax: "+ String.valueOf(yTransMax)+ " yTransMin: " + String.valueOf(yTransMin));
             Log.i("scale", "mPosX: " + String.valueOf(mPosX) + " mPosY: " + String.valueOf(mPosY));
-            lL1.invalidate();
+            imagen.invalidate();
 
             return true;
         }
 
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
 
-//        mDetector.onTouchEvent(event);
+        mDetector.onTouchEvent(event);
         // Let the ScaleGestureDetector inspect all events.
         // Let the ScaleGestureDetector inspect all events.
         mScaleDetector.onTouchEvent(event);
@@ -228,9 +400,9 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             if(indiceDoubleTap==2) {
-                                if (lL1.getScaleX() > 1 && lL1.getScaleY() > 1) {
-                                    lL1.setScaleX(1);
-                                    lL1.setScaleY(1);
+                                if (imagen.getScaleX() > 1 && imagen.getScaleY() > 1) {
+                                    imagen.setScaleX(1);
+                                    imagen.setScaleY(1);
 
                                     xTransMax=0;
                                     xTransMin=0;
@@ -242,20 +414,20 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
                                     mPosX=0;
                                     mPosY=0;
 
-                                    lL1.setTranslationX(mPosX);
-                                    lL1.setTranslationY(mPosY);
+                                    imagen.setTranslationX(mPosX);
+                                    imagen.setTranslationY(mPosY);
 
                                 } else {
 
                                     mScaleFactor*=3;
                                     saveScale=mScaleFactor;
-                                    lL1.setPivotX(x);
-                                    lL1.setPivotY(y);
-                                    lL1.setScaleX(mScaleFactor);
-                                    lL1.setScaleY(mScaleFactor);
+                                    imagen.setPivotX(x);
+                                    imagen.setPivotY(y);
+                                    imagen.setScaleX(mScaleFactor);
+                                    imagen.setScaleY(mScaleFactor);
 
-                                    viewWidth  = lL1.getWidth();
-                                    viewHeight = lL1.getHeight();
+                                    viewWidth  = imagen.getWidth();
+                                    viewHeight = imagen.getHeight();
 
                                     mContentViewX = viewWidth*mScaleFactor;
                                     mContentViewY = viewHeight*mScaleFactor;
@@ -323,19 +495,19 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
                                     " yTransMax: " + String.valueOf(yTransMax) + " yTransMin: " + String.valueOf(yTransMin));
 
                             if (mPosX > 0 && mPosX <= xTransMin) {
-                                lL1.setTranslationX(mPosX);
+                                imagen.setTranslationX(mPosX);
 //                                focusX=mPosX/mScaleFactor;
                             }
                             if (mPosX < 0 && -mPosX <= xTransMax) {
-                                lL1.setTranslationX(mPosX);
+                                imagen.setTranslationX(mPosX);
 //                                focusX=mPosX/mScaleFactor;
                             }
                             if (mPosY > 0 && mPosY <= yTransMin) {
-                                lL1.setTranslationY(mPosY);
+                                imagen.setTranslationY(mPosY);
 //                                focusY=mPosY/mScaleFactor;
                             }
                             if (mPosY < 0 && -mPosY <= yTransMax) {
-                                lL1.setTranslationY(mPosY);
+                                imagen.setTranslationY(mPosY);
 //                                focusY=mPosY/mScaleFactor;
                             }
 
@@ -348,7 +520,7 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
                             if (-mPosY > yTransMax)
                                 mPosY = -yTransMax;
 
-                            lL1.invalidate();
+                            imagen.invalidate();
 
                             mLastTouchX = x;
                             mLastTouchY = y;
@@ -357,7 +529,7 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
 
                         final float x = event.getX();
                         final float y = event.getY();
-                        lL1.invalidate();
+                        imagen.invalidate();
 
                         mLastTouchX = x;
                         mLastTouchY = y;
@@ -383,7 +555,8 @@ public class Ki67ComparativaActivity extends AppCompatActivity {
 
             }
         }
-        lL1.invalidate();
+        imagen.invalidate();
         return true;
     }
+
 }

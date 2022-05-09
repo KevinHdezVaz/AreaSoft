@@ -13,35 +13,41 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b33dcb9-f7b7-484a-a164-21b6bf6dcb6d" name="Default Changelist" comment="v1.1">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/AreaSoft.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/AreaSoft.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/openCVLibrary330/AreaSoft.openCVLibrary330.iml" beforeDir="false" />
+    <list default="true" id="8b33dcb9-f7b7-484a-a164-21b6bf6dcb6d" name="Default Changelist" comment="v1.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/windows10/leerimagen/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/app/cacomplex/vaz/ExampleInstrumentedTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/CalibracionesRealizadasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/CalibracionesRealizadasActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Filtros.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Ki67ComparativaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Ki67ComparativaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Ki67ObtenerColorActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/MedicionesCuantitativas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/RecortarAutomatico.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/RecortarAutomatico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/RecuentoKi67Activity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/VistaPrevia.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/VistaPrevia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Vistaprevia2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Vistaprevia2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/web2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/web2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_vistaprevia2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_vistaprevia2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/AcercaDe2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/AcercaDe2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/CalibracionesRealizadasActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/CalibracionesRealizadasActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/CortarImagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/CortarImagen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Edicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/Edicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Ki67ComparativaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/Ki67ComparativaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/MainActivityPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/MainActivityPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/MainActivityVisualizarFoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/MainActivityVisualizarFoto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Preferencias.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/Preferencias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/PreferenciasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/PreferenciasFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/RecortarAutomatico.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/RecortarAutomatico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/RecuentoKi67ManualActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/RecuentoKi67ManualActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/TextoCalibracionesPrevias.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/TextoCalibracionesPrevias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/VistaPrevia.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/VistaPrevia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/Vistaprevia2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/Vistaprevia2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/camaraGalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/camaraGalle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/vistaPick.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/vistaPick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/web.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/web.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/windows10/leerimagen/web2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/app/cacomplex/vaz/web2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_ki67_comparativa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ki67_comparativa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/preferencias.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/preferencias.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/windows10/leerimagen/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/app/cacomplex/vaz/ExampleUnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.11.19:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -226,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651359202121</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="v1.5">
+      <created>1651471859073</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651471859074</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,6 +258,7 @@
     <MESSAGE value="toma de foto y galeria" />
     <MESSAGE value="v1" />
     <MESSAGE value="v1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.1" />
+    <MESSAGE value="v1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.5" />
   </component>
 </project>

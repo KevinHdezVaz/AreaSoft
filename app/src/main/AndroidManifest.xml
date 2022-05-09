@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.windows10.leerimagen">
+    package="com.app.cacomplex.vaz">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -18,10 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Vistaprevia2"
+            android:name="com.app.cacomplex.vaz.Vistaprevia2"
             android:exported="true" />
         <activity
-            android:name=".camaraGalle"
+            android:name="com.app.cacomplex.vaz.camaraGalle"
             android:exported="true"  >
 
         <intent-filter>
@@ -33,12 +33,12 @@
     </activity>
 
         <activity
-            android:name=".vistaPick"
+            android:name="com.app.cacomplex.vaz.vistaPick"
             android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.windows10.leerimagen.fileprovider"
+            android:authorities="com.app.cacomplex.vaz.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -47,61 +47,61 @@
         </provider>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.app.cacomplex.vaz.MainActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".MainActivityPrincipal"
+            android:name="com.app.cacomplex.vaz.MainActivityPrincipal"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBarPrincipal" />
         <activity
-            android:name=".VistaPrevia"
+            android:name="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".web2"
+            android:name="com.app.cacomplex.vaz.web2"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Edicion"
-            android:parentActivityName=".VistaPrevia"
+            android:name="com.app.cacomplex.vaz.Edicion"
+            android:parentActivityName="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+                android:value="com.app.cacomplex.vaz.VistaPrevia" />
         </activity>
         <activity
-            android:name=".Preferencias"
+            android:name="com.app.cacomplex.vaz.Preferencias"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AcercaDe2"
+            android:name="com.app.cacomplex.vaz.AcercaDe2"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".CortarImagen"
+            android:name="com.app.cacomplex.vaz.CortarImagen"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBarPrincipal" />
         <activity
-            android:name=".MainActivityVisualizarFoto"
-            android:parentActivityName=".VistaPrevia"
+            android:name="com.app.cacomplex.vaz.MainActivityVisualizarFoto"
+            android:parentActivityName="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+                android:value="com.app.cacomplex.vaz.VistaPrevia" />
         </activity>
         <activity
-            android:name=".CalibracionesRealizadasActivity"
+            android:name="com.app.cacomplex.vaz.CalibracionesRealizadasActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RecuentoKi67ManualActivity"
-            android:parentActivityName=".VistaPrevia"
+            android:name="com.app.cacomplex.vaz.RecuentoKi67ManualActivity"
+            android:parentActivityName="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBarPrincipal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.windows10.leerimagen.VistaPrevia" />
+                android:value="com.app.cacomplex.vaz.VistaPrevia" />
         </activity>
 
 

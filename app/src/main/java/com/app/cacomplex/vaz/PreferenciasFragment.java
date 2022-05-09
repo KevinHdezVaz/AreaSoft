@@ -1,4 +1,4 @@
-package com.example.windows10.leerimagen;
+package com.app.cacomplex.vaz;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;

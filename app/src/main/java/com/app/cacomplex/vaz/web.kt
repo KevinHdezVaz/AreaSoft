@@ -1,4 +1,4 @@
-package com.example.windows10.leerimagen
+package com.app.cacomplex.vaz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

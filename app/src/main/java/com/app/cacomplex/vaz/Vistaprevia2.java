@@ -1,7 +1,7 @@
-package com.example.windows10.leerimagen;
+package com.app.cacomplex.vaz;
 
 
-import static com.example.windows10.leerimagen.RecortarAutomatico.TAG;
+import static com.app.cacomplex.vaz.RecortarAutomatico.TAG;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,12 +30,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.Lottie;
 import com.airbnb.lottie.LottieAnimationView;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;

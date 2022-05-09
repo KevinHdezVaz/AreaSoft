@@ -108,8 +108,8 @@
             android:key="calibracionesPrevias"
             android:summary="Calibraciones realizadas previamente con determinados objetivos y patrones">
             <intent
-                android:targetPackage="com.example.windows10.leerimagen"
-                android:targetClass="com.example.windows10.leerimagen.CalibracionesRealizadasActivity"/>
+                android:targetPackage="com.app.cacomplex.vaz"
+                android:targetClass="com.app.cacomplex.vaz.CalibracionesRealizadasActivity"/>
         </Preference>
 
     </PreferenceCategory>

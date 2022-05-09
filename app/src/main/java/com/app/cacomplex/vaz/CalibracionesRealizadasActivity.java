@@ -1,7 +1,6 @@
-package com.example.windows10.leerimagen;
+package com.app.cacomplex.vaz;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
