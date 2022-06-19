@@ -52,11 +52,6 @@
 
         </activity>
         <activity
-            android:name="com.app.cacomplex.vaz.MainActivityPrincipal"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarPrincipal" />
-        <activity
             android:name="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -73,9 +68,6 @@
                 android:value="com.app.cacomplex.vaz.VistaPrevia" />
         </activity>
         <activity
-            android:name="com.app.cacomplex.vaz.Preferencias"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.app.cacomplex.vaz.AcercaDe2"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
@@ -87,18 +79,6 @@
             android:name="com.app.cacomplex.vaz.MainActivityVisualizarFoto"
             android:parentActivityName="com.app.cacomplex.vaz.VistaPrevia"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.app.cacomplex.vaz.VistaPrevia" />
-        </activity>
-        <activity
-            android:name="com.app.cacomplex.vaz.CalibracionesRealizadasActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.app.cacomplex.vaz.RecuentoKi67ManualActivity"
-            android:parentActivityName="com.app.cacomplex.vaz.VistaPrevia"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarPrincipal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app.cacomplex.vaz.VistaPrevia" />

@@ -31,6 +31,7 @@ public class web2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web2);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
  
@@ -66,9 +67,10 @@ public class web2 extends AppCompatActivity {
 
         webView.loadUrl("https://ij.imjoy.io/?open="+valor);
         webView.getSettings().setJavaScriptEnabled(true);
+
+
 mostrarInfo();
 ejecutar();
-
 
 
 if (isFirstTime()){

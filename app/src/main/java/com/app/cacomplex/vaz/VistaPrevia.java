@@ -1,8 +1,7 @@
 package com.app.cacomplex.vaz;
 
 
-import static com.app.cacomplex.vaz.RecortarAutomatico.TAG;
-
+ 
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -340,25 +339,21 @@ private boolean isFirstTime()
 public void metodoenviarimagenCamara()
 {
 //envia la imagen de la galeria al servidor
-    Log.d(TAG, ": "+" button clicked");
-    MediaManager.get().upload(photoURI).callback(new UploadCallback() {
+     MediaManager.get().upload(photoURI).callback(new UploadCallback() {
         @Override
         public void onStart(String requestId) {
-            Log.d(TAG, "onStart: "+"started");
 
 
         }
 
         @Override
         public void onProgress(String requestId, long bytes, long totalBytes) {
-            Log.d(TAG, "onStart: "+"uploading");
 
 
         }
 
         @Override
         public void onSuccess(String requestId, Map resultData) {
-            Log.d(TAG, "onStart: "+"usuccess");
 
             FBToast.successToast(VistaPrevia.this,"Cargando...", FBToast.LENGTH_LONG);
 
@@ -371,14 +366,12 @@ public void metodoenviarimagenCamara()
 
         @Override
         public void onError(String requestId, ErrorInfo error) {
-            Log.d(TAG, "onStart: "+error);
-            Toast.makeText(VistaPrevia.this, "Error", Toast.LENGTH_SHORT).show();
+             Toast.makeText(VistaPrevia.this, "Error", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onReschedule(String requestId, ErrorInfo error) {
-            Log.d(TAG, "onStart: "+error);
-        }
+         }
     }).dispatch();
 
 
@@ -651,19 +644,7 @@ epicDialog.setCancelable(false);
                                     dialog.show();
                                 }
                             });
-                            imagenCortada= RecortarAutomatico.recortarImagenAutomatico(VistaPrevia.this,imagen,getResources().getDisplayMetrics().density);
-                            if(!(imagenCortada==null)){
-                                imagen=imagenCortada.copy(Bitmap.Config.ARGB_8888,true);
-                                imagenCortada.recycle();
 
-                            }else{
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(VistaPrevia.this,"Debes elegir u obtener una imagen histologica no recortada previamente..",Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                            }
                             dialog.dismiss();
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -711,12 +692,8 @@ epicDialog.setCancelable(false);
                 rotarImagen(-90);
                 break;
 
-            case R.id.recuentoKi67A:
-                 break;
-            case R.id.recuentoKi67M:
-                Intent intentRecuentoM= new Intent(this, RecuentoKi67ManualActivity.class);
-                startActivity(intentRecuentoM);
-                break;
+
+
             case R.id.acercaDe:
                 Intent intentAcercaDe=new Intent(this,AcercaDe2.class);
                 startActivity(intentAcercaDe);

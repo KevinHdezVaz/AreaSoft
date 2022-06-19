@@ -1,7 +1,6 @@
 package com.app.cacomplex.vaz;
 
 
-import static com.app.cacomplex.vaz.RecortarAutomatico.TAG;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -128,25 +127,25 @@ LottieAnimationView animacion;
     public void metodoenviarimagenCamara()
     {
 
-        Log.d(TAG, ": "+" button clicked");
+        Log.d("TAG", ": "+" button clicked");
         MediaManager.get().upload(imagePath).callback(new UploadCallback() {
             @Override
             public void onStart(String requestId) {
-                Log.d(TAG, "onStart: "+"started");
+                Log.d("TAG", "onStart: "+"started");
 
 
             }
 
             @Override
             public void onProgress(String requestId, long bytes, long totalBytes) {
-                Log.d(TAG, "onStart: "+"uploading");
+                Log.d("TAG", "onStart: "+"uploading");
 
 
             }
 
             @Override
             public void onSuccess(String requestId, Map resultData) {
-                Log.d(TAG, "onStart: "+"usuccess");
+                Log.d("TAG", "onStart: "+"usuccess");
 
                 FBToast.successToast(Vistaprevia2.this,"Cargando...", FBToast.LENGTH_LONG);
                 epicDialog.dismiss();
@@ -158,13 +157,13 @@ LottieAnimationView animacion;
 
             @Override
             public void onError(String requestId, ErrorInfo error) {
-                Log.d(TAG, "onStart: "+error);
+                Log.d("TAG", "onStart: "+error);
                 Toast.makeText(Vistaprevia2.this, "Error", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onReschedule(String requestId, ErrorInfo error) {
-                Log.d(TAG, "onStart: "+error);
+                Log.d("TAG", "onStart: "+error);
             }
         }).dispatch();
 
