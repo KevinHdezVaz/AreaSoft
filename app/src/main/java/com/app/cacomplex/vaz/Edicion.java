@@ -53,8 +53,6 @@ import java.util.Date;
 
 public class Edicion extends AppCompatActivity {
 
-
-
     LinearLayout linearLayout;
     LinearLayout linearLayoutControles;
     FrameLayout frameLayout;
