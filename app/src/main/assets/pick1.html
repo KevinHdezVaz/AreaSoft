@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<H3><center>Se requiere conexión a internet.</center></H3>
+</BODY>
+
+
+<div id="pick" class="full-height"></div>
+<script>
+
+        Theorem.prototype.draw = function(){
+
+       this.points.boundary = [];
+       this.points.interior = [];
+
+       this.points.check.forEach((funciont(point){
+            var points = [];
+
+            for(var i = point.x -1 ; i< point.x +2: i++){
+                for (var j = point.y -1; j< point.y+2; j++){
+                    points.push(
+                        context.getImageData(i,j,1,1).data
+                        );
+
+            }
+
+            }
+
+       var boundary = false
+
+       for ( var i = 0;i < points.lenght; i++){
+       if(
+            points[i][0] <= 70 &&
+            points[i][3] >= 170 &&
+        ){
+            this.points.boundary.push(point);
+            boundary = true
+            break;
+        }
+
+     }
+
+     if(!boundary){
+      for ( var i = 0;i < points.lenght; i++){
+        if(
+            !boundary &&
+            points[i][0] >= 90 &&
+            points[i][0] >= 110 &&
+            points[i][3] >= 140 &&
+            points[i][3] >= 160
+        )
+        {
+        this.points.interior.push(point);
+        break;
+        }
+     }
+}).bind(this);
+
+
+     this.points.boundary.forEach(function(point){
+     var path = new Path2D();
+     path.arc(point.x, point.y, 5,0,Math.PI*2);
+
+     context.fillStyle = "rgba (0,0,255,1);
+     context.fill(path);
+     });
+
+     this.points.interior.forEach(function(point){
+     var path = new Path2D();
+     path.arc(point.x, point.y, 5,0,Math.PI*2);
+
+     context.fillStyle = "rgba (0,0,255,1);
+     context.fill(path);
+     });
+    </script>
+
+</HTML>

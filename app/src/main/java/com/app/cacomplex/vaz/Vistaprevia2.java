@@ -77,7 +77,9 @@ LottieAnimationView animacion;
 
         button.setOnClickListener(view -> selectImage());
         buttonupload2.setOnClickListener(view -> {
+            {
 
+            }
 
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

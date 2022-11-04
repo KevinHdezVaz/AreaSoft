@@ -36,7 +36,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1702de74ef2c57a3b3eb0fac9ae08ad7/appcompat-1.4.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/09c259fd5fead178286666fea6ce93fc/webkit-1.4.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/88569e7aed3160042cbfdd8507817e7a/jetified-lifecycle-runtime-ktx-2.4.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a8c7e29dd6744b40885b450294eab6f9/jetified-picasso-2.71828-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/570b666b43eba30d8b84fe0d2fa4629e/jetified-picasso-2.71828-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fed21c0941881cf7a5ea2d9ebf9d93d9/jetified-glide-4.12.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b37a1bf1bcd643cf6fea59fec5d368f/jetified-viewpager2-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9db907c4bd9aac67adf0f7d6722972ff/fragment-1.3.6-api.jar</arg>
@@ -107,9 +107,9 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55fc771cd12260f266109f3502ef1bbd/jetified-cloudinary-android-preprocess-1.30.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cdefb2ca656f64e9cfa9460f216c400d/jetified-cloudinary-android-ui-1.30.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2a300e71878a6e662ca9f29bd2abd5c2/jetified-cloudinary-android-download-1.30.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c28088bf073783bad0e4d29406fac424/jetified-FBToast-1.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fac1b3aababee66e0098adcc5f41afcc/jetified-FBToast-1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6e113dfd577c39bc817f6cefee254e3c/jetified-MaterialShowcaseView-1.3.4-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4c532494e5b163eedd7978577df249b2/jetified-MultiWaveHeader-1.0.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f322fd4cb731b359b1cacd20582b135/jetified-MultiWaveHeader-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a242b689a5ce0044c42241b14dd4f12d/jetified-android-gif-drawable-1.2.24-api.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/platforms/android-31/android.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/build-tools/30.0.2/core-lambda-stubs.jar</arg>
@@ -148,6 +148,7 @@
     <content url="file://$MODULE_DIR$/../../../app/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/assets" type="java-resource" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

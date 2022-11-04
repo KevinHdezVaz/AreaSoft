@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<H3><center>Se requiere conexión a internet.</center></H3>
+</BODY>
+
+
+<div id="pick" class="full-height"></div>
+<script>
+      Theorem.prototype.draw = function(){
+      //tamaño adaptativo de la imagen
+
+      this.checkLimits();
+
+      this.points.check = [];
+      for ( var i= 0; i< rows; i++){
+         for (var j = 0; j<columns; j++){
+         //..draw squares
+
+         if(
+            x >= this.limits.x.min &&
+            x <= this.limits.x.max &&
+            x >= this.limits.y.min &&
+            x <= this.limits.y.max
+            ){
+
+            this.points.check.push({
+            "x": j * this.interval,
+            "y": i * this.interval,
+             });
+
+             }
+     }
+
+   }
+
+    this.points.check.forEach(function(point){
+    var path = new Path2D();
+    path.arc(point.x, points.y, 5,0, Math.PI *2;
+
+    context.fillStyle = "rgba(255,0,0,0.3);
+    context.fill(path);
+
+    //dibujar linea imaginarias de fondo para el calculo
+
+    }
+
+    Theorem.prototype.checkLimits = function(){
+    var limits = {
+    "x": {
+        "min": window.innerWidth,
+        "max": 0,
+     },
+    "y": {
+        "min": window.innerWidth,
+        "max": 0,
+     }
+    };
+
+   this.points.click.forEach(function(point){
+   limits.x.min = Math.min ( limits.x.min, point.x);
+   limits.x.max = Math.max (limits.x.max, point.x);
+   limits.y.min = Math.max (limits.y.min, point.y);
+   limits.y.max = Math.max (limits.y.max, point.y);
+    });
+
+    this.limits = limits;
+
+
+    </script>
+
+</HTML>

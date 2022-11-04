@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>nCOVID19</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin="" />
+
+</head>
+
+<body>
+
+
+<div id="pick" class="full-height"></div>
+<script>
+
+        var interior = this.points.interior;
+        var perimetro = this.points.perimetro;
+
+        console.log(
+        "interior points:", interior.lenght
+        );
+
+         console.log(
+        "perimetro points:", perimetro.lenght
+        );
+
+         console.log(
+        "area:", interior.lenght + (perimetro.lenght/2) - 1
+        );
+
+    </script>
+
+
+</body>
+
+</html>

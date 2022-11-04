@@ -2,7 +2,6 @@
   <library name="Gradle: com.cloudinary:cloudinary-android:1.30.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/561cf5bd2a783b873acff108552d72ce/jetified-cloudinary-android-1.30.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/561cf5bd2a783b873acff108552d72ce/jetified-cloudinary-android-1.30.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/561cf5bd2a783b873acff108552d72ce/jetified-cloudinary-android-1.30.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

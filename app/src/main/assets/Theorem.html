@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+</HEAD>
+<BODY LANG="en-US" BGCOLOR="#ffffff" DIR="LTR">
+<H3><center>Se requiere conexión a internet.</center></H3>
+</BODY>
+
+
+<div id="Theorem" class="full-height"></div>
+<script>
+
+     function Theorem(canvas,interval){
+     this.canvas = canvas;
+     this.interval = interval;
+
+     this.draw();
+
+     Theorem.prototype.draw = function(){
+     this.canvas.width = window.innerWidth;
+     this.canvas.height = window.innerHeight;
+
+     var rows = Math.cell(window.innerHeight / this.interval);
+     var columns = Math.cell(window.innerWidth / this.interval);
+
+     var context = this.canvas.getContext("2d")
+
+     context.clearRect(
+     0,0,window.innerWidth, window.innerHeight
+     );
+
+     var shade = false;
+
+     for( var i= 0; i< rows; i++){
+        for( var j = 0; j< columns; j++){
+
+        shade = !shade;
+
+       if(shade){
+        context.fillStyle = "rgba(0,0,0,0.15)";
+        } else {
+        context.fillStyle = "rgba(0,0,0,0.1)";
+        }
+
+
+        var x = j * this.interval;
+        var y = i * this.interval;
+
+        context.fillRect(
+        x,y,this.interval, this.interval
+        );
+
+     }
+
+     if(columns % 2 == 0){
+     shade  = !shade;
+     }
+ }
+}
+
+    var theorem = new Theorem (document.querySelector("canvas"),72);
+    </script>
+
+</HTML>
